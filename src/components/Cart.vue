@@ -1,15 +1,14 @@
-<script>
-</script>
-<script setup>
-import { inject } from 'vue';
 
-const cart = inject("cart")
+<script setup>
+import { useCartStore } from '../store';
+
+const cartStore = useCartStore();
 </script>
 
 <template>
     <div>
-        <template v-for="product in cart">
-            {{ product.toString() }}
+        <template v-for="product in cartStore.getState">
+            {{ JSON.stringify(product) }}
         </template>
     </div>
 </template>

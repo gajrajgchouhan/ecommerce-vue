@@ -9,8 +9,9 @@ export default {
 }
 </script>
 <script setup>
-import { inject } from 'vue';
-const addToCart = inject('addToCart');
+import { useCartStore } from '../store';
+
+const cartStore = useCartStore();
 </script>
 <template>
     <div class="flex flex-col w-[300px] h-[450px] items-center bg-white text-[16px] m-4 rounded-[10px]">
@@ -18,7 +19,7 @@ const addToCart = inject('addToCart');
         <h3>{{ product.title }}</h3>
         <p>{{ product.price }}</p>
         <button class="border-2 border-black p-2" @click="() => {
-            addToCart(product)
+            cartStore.addToCart(product)
         }">Add to Cart</button>
     </div>
 </template>
